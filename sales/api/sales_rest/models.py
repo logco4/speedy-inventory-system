@@ -6,33 +6,32 @@ class AutomobileVO (models.Model):
     import_href = models.CharField(max_length = 100)
     vin = models.CharField(max_length=17, unique=True)
 
-class sales_person (models.Model):
+class SalesPerson (models.Model):
     name = models.CharField(max_length = 100)
     employee_id = models.SmallIntegerField()
 
-class customer (models.Model):
+class Customer (models.Model):
     name = models.CharField(max_length = 100)
     address = models.CharField(max_length = 200)
     phone_number = models.CharField(max_length = 13)
 
-class sales_record (models.Model):
+class SalesRecord (models.Model):
     price = models.CharField(max_length = 10)
 
-    automobile = models.ForeignKey(
+    automobile = models.OneToOneField(
         AutomobileVO,
         related_name="sales_record",
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
     )
 
     sales_person = models.ForeignKey(
-        sales_person,
+        SalesPerson,
         related_name="sales_records",
         on_delete=models.PROTECT
-
     )
 
     customer = models.ForeignKey(
-        customer,
+        Customer,
         related_name="sales_records",
         on_delete=models.PROTECT
     )

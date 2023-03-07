@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Hayden Dunlap - Sales Microservice
+* Logan - Service microservice
+* Hayden Dunlap - Sales microservice
 
 ## Design
 
