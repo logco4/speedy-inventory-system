@@ -3,44 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 
-from common.json import ModelEncoder
-from .models import AutomobileVO, Technician, Appointment\
-
-
-
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "import_href",
-        "vin",
-        "id",
-    ]
-
-
-class TechnicianEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "name",
-        "employee_number",
-        "id",
-    ]
-
-
-class AppointmentEncoder(ModelEncoder):
-    model = Appointment
-    properties = [
-        "owner",
-        "appt_date",
-        "appt_time",
-        "reason",
-        "technician",
-        "automobile",
-        "id",
-    ]
-    encoders = {
-        "automobile": AutomobileVOEncoder(),
-        "technician": TechnicianEncoder(),
-    }
+from .encoders import TechnicianEncoder, AppointmentEncoder
+from .models import AutomobileVO, Technician, Appointment
 
 
 @require_http_methods(["GET", "POST"])
@@ -60,7 +24,7 @@ def api_appointments(request):
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid automobile id"},
-                status = 400,
+                status = 404,
             )
         try:
             technician = Technician.objects.get(employee_number=content["technician"])
@@ -68,9 +32,8 @@ def api_appointments(request):
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid technician id"},
-                status = 400
+                status = 404
             )
-
 
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
@@ -96,3 +59,35 @@ def api_technicians(request):
             encoder=TechnicianEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET"])
+def api_technician(request, id):
+    if request.method == "GET":
+        try:
+            technician = Technician.objects.get(id=id)
+            return JsonResponse(
+                technician,
+                encoder=TechnicianEncoder,
+                safe=False,
+            )
+        except Technician.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+
+
+@require_http_methods(["GET"])
+def api_appointment(request, id):
+    if request.method == "GET":
+        try:
+            appointment = Appointment.objects.get(id=id)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response

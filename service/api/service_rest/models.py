@@ -37,4 +37,4 @@ class Appointment(models.Model):
 
 
     def __str__(self):
-        return (self.vin)
+        return (self.owner)
