@@ -32,6 +32,9 @@ class AppointmentEncoder(ModelEncoder):
         "id",
         "technician",
     ]
+    def get_extra_data(self, o):
+        return {"status": o.status.name}
+
     encoders = {
         "technician": TechnicianEncoder(),
     }

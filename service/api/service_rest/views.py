@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 import json
 
 from .encoders import TechnicianEncoder, AppointmentEncoder
-from .models import AutomobileVO, Technician, Appointment
+from .models import AutomobileVO, Technician, Appointment, Status
 
 
 @require_http_methods(["GET", "POST"])
@@ -17,6 +17,8 @@ def api_appointments(request):
         )
     else:
         content = json.loads(request.body)
+
+        content["status"] = Status.objects.get(name="SUBMITTED")
 
 
         try:
@@ -83,7 +85,7 @@ def api_technician(request, id):
             return response
 
 
-@require_http_methods(["GET", "DELETE"])
+@require_http_methods(["GET", "DELETE", "PUT"])
 def api_appointment(request, id):
     if request.method == "GET":
         try:
@@ -97,6 +99,19 @@ def api_appointment(request, id):
             response = JsonResponse({"message": "Appointment does not exist"})
             response.status_code = 404
             return response
-    else:
+    elif request.method == "DELETE":
         count, _ = Appointment.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
+    else:
+        content = json.loads(request.body)
+
+        status = Status.objects.get(name=content["status"])
+        content["status"] = status
+
+        Appointment.objects.filter(id=id).update(**content)
+        appointment = Appointment.objects.get(id=id)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentEncoder,
+            safe=False,
+        )
