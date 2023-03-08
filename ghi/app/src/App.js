@@ -11,6 +11,12 @@ import TechnicianForm from './TechnicianForm';
 import ServiceHistory from './ServiceHistory';
 import ListSalesRecords from './ListSalesRecords';
 import ListPersonsSales from './ListPersonsSales';
+import ListManufacturers from './ListManufacturers';
+import ManufacturerForm from './ManufacturerForm';
+import ListVehicleModels from './ListVehicleModels';
+import VehicleModelForm from './VehicleModelForm';
+import ListAutomobiles from './ListAutomobiles';
+import AutomobileForm from './AutomobileForm';
 
 function App() {
   return (
@@ -25,6 +31,7 @@ function App() {
           <Route path="/records/" element={<ListSalesRecords />} />
           <Route path="/records/employee/" element={<ListPersonsSales />} />
 
+
           <Route path='appointments'>
             <Route index element={<ListAppointments />} />
             <Route path='new' element={<AppointmentForm />} />
@@ -34,6 +41,21 @@ function App() {
           <Route path='technicians'>
             <Route index element={<ListTechnicians />} />
             <Route path='new' element={<TechnicianForm />} />
+          </Route>
+
+          <Route path='manufacturers'>
+            <Route index element={<ListManufacturers />} />
+            <Route path='new' element={<ManufacturerForm />} />
+          </Route>
+
+          <Route path='models'>
+            <Route index element={<ListVehicleModels />} />
+            <Route path='new' element={<VehicleModelForm />} />
+          </Route>
+
+          <Route path='automobiles'>
+            <Route index element={<ListAutomobiles />} />
+            <Route path='new' element={<AutomobileForm />} />
           </Route>
 
         </Routes>
