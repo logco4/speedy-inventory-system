@@ -81,40 +81,53 @@ function SalesRecordForm () {
 
     return (
         <>
-        <form onSubmit={handleSubmit} id="sales-record-form">
-            <div>
-                <input onChange={handleFieldChange} value={formData.price} required name="price" placeholder="Price" type="text" id="price" />
-                <label htmlFor="price">Price</label>
+        <div className="row">
+            <div className="offset-3 col-6">
+                <div className="shadow p-4 mt-4 rounded" style={{backgroundColor: 'white'}}>
+                    <h2 className="text-center" >Record a sale</h2>
+                    <form onSubmit={handleSubmit} id="sales-record-form">
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFieldChange} value={formData.price} required name="price"  className="form-control" placeholder="Price" type="text" id="price" />
+                            <label htmlFor="price">Price</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select onChange={handleFieldChange} value={formData.automobile} required name="automobile" id="automobile" className="form-select">
+                                <option value="">Choose an automobile</option>
+                                {
+                                    autos.map(automobile => {
+                                        return (
+                                        <option value={automobile.vin} key={automobile.vin}>{automobile.year} {automobile.manufacturer} {automobile.model} | Vin # {automobile.vin}</option>
+                                        )
+                                })}
+                            </select>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select onChange={handleFieldChange} value={formData.customer} required name="customer" id="customer" className="form-select">
+                                <option value="">Choose a customer</option>
+                                {
+                                    customers.map(customer => {
+                                        return (
+                                        <option value={customer.id} key={customer.id}>{customer.name} | Customer ID: {customer.id}</option>
+                                        )
+                                })}
+                            </select>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <select onChange={handleFieldChange} value={formData.salesPerson} required name="salesPerson" id="salesPerson" className="form-select">
+                                <option value="">Choose a sales person</option>
+                                {
+                                    salesPeople.map(salesPerson => {
+                                        return (
+                                        <option value={salesPerson.employee_id} key={salesPerson.employee_id}>{salesPerson.name} | Employee ID: {salesPerson.employee_id}</option>
+                                        )
+                                })}
+                            </select>
+                        </div>
+                        <button className="btn btn-success">Create</button>
+                    </form>
+                </div>
             </div>
-            <select onChange={handleFieldChange} value={formData.automobile} required name="automobile" id="automobile" className="form-select">
-                <option value="">Choose an automobile</option>
-                {
-                    autos.map(automobile => {
-                        return (
-                        <option value={automobile.vin} key={automobile.vin}>{automobile.year} {automobile.manufacturer} {automobile.model} | Vin # {automobile.vin}</option>
-                        )
-                })}
-            </select>
-            <select onChange={handleFieldChange} value={formData.customer} required name="customer" id="customer" className="form-select">
-                <option value="">Choose a customer</option>
-                {
-                    customers.map(customer => {
-                        return (
-                        <option value={customer.id} key={customer.id}>{customer.name} | Customer ID: {customer.id}</option>
-                        )
-                })}
-            </select>
-            <select onChange={handleFieldChange} value={formData.salesPerson} required name="salesPerson" id="salesPerson" className="form-select">
-                <option value="">Choose a sales person</option>
-                {
-                    salesPeople.map(salesPerson => {
-                        return (
-                        <option value={salesPerson.employee_id} key={salesPerson.employee_id}>{salesPerson.name} | Employee ID: {salesPerson.employee_id}</option>
-                        )
-                })}
-            </select>
-            <button>Create</button>
-        </form>
+        </div>
         </>
     )
 }

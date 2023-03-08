@@ -44,39 +44,43 @@ function ListPersonsSales () {
 
     return (
         <>
-        <select onChange={handleSalesPersonChange}  required name="salesPerson" id="salesPerson" className="form-select">
-            <option value="" >Choose a sales person</option>
-            {
-                salesPeople.map(p => {
-                    return (
-                    <option value={p.employee_id} key={p.employee_id}>{p.name} #{p.employee_id}</option>
-                    )
-            })}
-        </select>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sales person</th>
-                    <th>Employeee ID</th>
-                    <th>Purchaser</th>
-                    <th>Price</th>
-                    <th>Vehicle VIN</th>
-                </tr>
-            </thead>
-            <tbody>
+
+        <div >
+            <h2 className="text-center" ><b>Sales records by employee</b></h2>
+            <select onChange={handleSalesPersonChange}  required name="salesPerson" id="salesPerson" className="form-select">
+                <option value="" >Choose a sales person</option>
                 {
-                    salesRecords.map(record => {
-                        return <tr key={record.id}>
-                            <td>{record.sales_person.name}</td>
-                            <td>{record.sales_person.employee_id}</td>
-                            <td>{record.customer.name}</td>
-                            <td>{record.price}</td>
-                            <td>{record.automobile.vin}</td>
-                        </tr>
-                    })
-                }
-            </tbody>
-        </table>
+                    salesPeople.map(p => {
+                        return (
+                        <option value={p.employee_id} key={p.employee_id}>{p.name} #{p.employee_id}</option>
+                        )
+                })}
+            </select>
+            <table className="table table-striped shadow p-4 mt-4 rounded">
+                <thead>
+                    <tr>
+                        <th>Sales person</th>
+                        <th>Employeee ID</th>
+                        <th>Purchaser</th>
+                        <th>Price</th>
+                        <th>Vehicle VIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        salesRecords.map(record => {
+                            return <tr key={record.id}>
+                                <td>{record.sales_person.name}</td>
+                                <td>{record.sales_person.employee_id}</td>
+                                <td>{record.customer.name}</td>
+                                <td>{record.price}</td>
+                                <td>{record.automobile.vin}</td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
         </>
     )
 }

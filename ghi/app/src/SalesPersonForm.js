@@ -36,20 +36,27 @@ function SalesPersonForm () {
             [e.target.name]: e.target.value
         })
     }
-    
+
     return (
         <>
-        <form onSubmit={handleSubmit} id="sales-person-form">
-            <div>
-                <input onChange={handleFieldChange} value={formData.name} required name="name" placeholder="Name" type="text" id="name" />
-                <label htmlFor="name">Name</label>
+        <div className="row">
+            <div className="offset-3 col-6">
+                <div className="shadow p-4 mt-4 rounded" style={{backgroundColor: 'white'}}>
+                    <h2 className="text-center" >Add sales person</h2>
+                    <form onSubmit={handleSubmit} id="sales-person-form">
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFieldChange} value={formData.name} required name="name" className="form-control" placeholder="Name" type="text" id="name" />
+                            <label htmlFor="name">Name</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFieldChange} value={formData.employeeId} required name="employeeId" className="form-control" placeholder="Employee ID" type="number" id="employeeId" />
+                            <label htmlFor="employeeId">Employee ID</label>
+                        </div>
+                        <button className="btn btn-success">Create</button>
+                    </form>
+                </div>
             </div>
-            <div>
-                <input onChange={handleFieldChange} value={formData.employeeId} required name="employeeId" placeholder="Employee ID" type="text" id="employeeId" />
-                <label htmlFor="employeeId">Employee ID</label>
-            </div>
-            <button>Create</button>
-        </form>
+        </div>
         </>
     )
 }
