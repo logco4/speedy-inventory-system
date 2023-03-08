@@ -51,7 +51,7 @@ function ListAppointments() {
 
     return (
         <>
-        <h1>Service appointments</h1>
+        <h1>Pending Appointments</h1>
         <table className='table table-striped'>
             <thead>
                 <tr>
