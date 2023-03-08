@@ -4,11 +4,22 @@ from django.views.decorators.http import require_http_methods
 from django.db import IntegrityError
 import json
 from .encoders import (
+    AutomobileVOEncoder,
     SalesPersonEncoder,
     SalesRecordEncoder,
     CustomerEncoder,
 )
 from .models import AutomobileVO, SalesPerson, SalesRecord, Customer
+
+
+@require_http_methods("GET")
+def api_list_automobiles (request):
+    autos = AutomobileVO.objects.exclude(sales_record=True)
+    return JsonResponse(
+        {"autos": autos},
+        encoder=AutomobileVOEncoder,
+        safe=False
+    )
 
 
 @require_http_methods(["GET", "POST"])
@@ -41,7 +52,13 @@ def api_list_employees (request):
         )
     else:
         content = json.loads(request.body)
-        sales_person = SalesPerson.objects.create(**content)
+        try:
+            sales_person = SalesPerson.objects.create(**content)
+        except IntegrityError:
+            return JsonResponse(
+                {"message": "Employee ID is associated with another employee"},
+                status=403
+            )
         return JsonResponse(
             sales_person,
             encoder=SalesPersonEncoder,
@@ -129,7 +146,7 @@ def api_show_record (request, record_id):
             encoder=SalesRecordEncoder,
             safe=False
         )
-    
+
     elif request.method == "PUT":
         content = json.loads(request.body)
         try:

@@ -23,7 +23,10 @@ def poll():
                 AutomobileVO.objects.update_or_create(
                     import_href=automobile['href'],
                     defaults={
-                        "vin": automobile["vin"]
+                        "vin": automobile["vin"],
+                        "year": automobile["year"],
+                        "manufacturer": automobile["model"]["manufacturer"]["name"],
+                        "model": automobile["model"]["name"],
                     }
                 )
                 print(AutomobileVO.objects.all())
