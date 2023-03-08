@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 function ListPersonsSales () {
     const [salesPeople, setSalesPeople] = useState([])
 
-    const [salesPersonId, setSalesPersonId] = useState()
-
     const [salesRecords, setSalesRecords] = useState([])
 
     async function fetchData () {
@@ -17,7 +15,16 @@ function ListPersonsSales () {
             console.error(salesPeopleResponse)
         }
 
-        const recordsResponse = await fetch(`http://localhost:8090/api/records/`)
+
+    }
+
+    const getPersonsSales = async (id) => {
+        if (!id) {
+            setSalesRecords([])
+            return
+        }
+
+        const recordsResponse = await fetch(`http://localhost:8090/api/employees/${id}/records/`)
         if (recordsResponse.ok) {
             const data = await recordsResponse.json()
             setSalesRecords(data.sales_records)
@@ -26,29 +33,23 @@ function ListPersonsSales () {
         }
     }
 
-    const handleSalesPersonIdChange = (e) => {
-        const value = e.target.value
-        setSalesPersonId(value)
+    const handleSalesPersonChange = (e) => {
+        const id = e.target.value
+        getPersonsSales(id)
     }
 
     useEffect(() => {
         fetchData()
     }, [])
 
-    const getRecordsFiltered = () => {
-        return (
-            salesRecords.filter(r => r.sales_person.employee_id === parseInt(salesPersonId))
-        )
-    }
-
     return (
         <>
-        <select onChange={handleSalesPersonIdChange} value={salesPersonId} required name="salesPerson" id="salesPerson" className="form-select">
+        <select onChange={handleSalesPersonChange}  required name="salesPerson" id="salesPerson" className="form-select">
             <option value="" >Choose a sales person</option>
             {
                 salesPeople.map(p => {
                     return (
-                    <option value={p.employee_id} key={p.employee_id}>{p.name} | Employee ID: {p.employee_id}</option>
+                    <option value={p.employee_id} key={p.employee_id}>{p.name} #{p.employee_id}</option>
                     )
             })}
         </select>
@@ -64,7 +65,7 @@ function ListPersonsSales () {
             </thead>
             <tbody>
                 {
-                    getRecordsFiltered().map(record => {
+                    salesRecords.map(record => {
                         return <tr key={record.id}>
                             <td>{record.sales_person.name}</td>
                             <td>{record.sales_person.employee_id}</td>
