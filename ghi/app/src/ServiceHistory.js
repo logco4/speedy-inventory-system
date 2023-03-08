@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
 import App from './App';
-import {Link} from 'react-router-dom';
 
 
-function ListAppointments() {
+function ServiceHistory() {
     const [appointments, setAppointments] = useState([]);
+    const [filterTerm, setFilterTerm] = useState("");
+    const [filterCategory, setFilterCategory] = useState("vin");
     const [filteredAppointments, setFilteredAppointments] = useState([]);
-
 
     const getData = async () => {
         const response = await fetch("http://localhost:8080/api/appointments/");
 
         if (response.ok) {
             const data = await response.json();
-            setAppointments(data.appointments.filter((appointment) => appointment.status === 'SUBMITTED'));
+            setAppointments(data.appointments)
         }
-
-
     }
 
     useEffect(() => {
@@ -24,34 +22,24 @@ function ListAppointments() {
     }, []);
 
 
-    const handleStatusChange = async (e) => {
-        e.preventDefault();
-        const appointment = e.target.name
-        const status = e.target.value
-        const data = {status: status}
-
-
-        const locationUrl = `http://localhost:8080/api/appointments/${appointment}/`;
-
-        const fetchConfig = {
-            method: "put",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        };
-
-        const response = await fetch(locationUrl, fetchConfig);
-        if (response.ok) {
-            getData();
-        }
+    const handleFilterChange = (e) => {
+        setFilterTerm(e.target.value);
     }
 
+    const getFilteredAppointments = () => {
+        setFilteredAppointments(appointments.filter((appointment) => appointment[filterCategory].toLowerCase().includes(filterTerm.toLowerCase())));
+    };
 
 
     return (
         <>
-        <h1>Service appointments</h1>
+        <div className='input-group mb-3 mt-3'>
+            <input onChange={handleFilterChange} type="text" className='form-control' placeholder='VIN' aria-describedby='basic-addon2'></input>
+            <div className='input-group-append'>
+                <button onClick={getFilteredAppointments} className='btn btn-outline-secondary' type='button'>Search VIN</button>
+            </div>
+        </div>
+
         <table className='table table-striped'>
             <thead>
                 <tr>
@@ -62,12 +50,13 @@ function ListAppointments() {
                     <th>Time</th>
                     <th>Technician</th>
                     <th>Reason</th>
-                    <th></th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                {appointments.map(appointment => {
+                {filteredAppointments.map((appointment) => {
                     return (
+                        <>
                         <tr key={appointment.id}>
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer_name}</td>
@@ -76,20 +65,15 @@ function ListAppointments() {
                             <td>{appointment.appt_time}</td>
                             <td>{appointment.technician.name}</td>
                             <td>{appointment.reason}</td>
-                            <td>
-                                <button onClick={handleStatusChange} name={appointment.id} value="CANCELED" id={appointment.id} className='btn btn-danger'>Cancel</button>
-                                <button onClick={handleStatusChange} name={appointment.id} value="FINISHED" className='btn btn-success'>Finished</button>
-                            </td>
+                            <td>{appointment.status}</td>
                         </tr>
+                        </>
                     );
                 })}
             </tbody>
         </table>
-        <Link to="/appointments/new">
-            <button className='btn btn-primary'>Create appointment</button>
-        </Link>
         </>
     )
 }
 
-export default ListAppointments;
+export default ServiceHistory;

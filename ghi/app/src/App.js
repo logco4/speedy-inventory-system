@@ -8,6 +8,7 @@ import SalesPersonForm from './SalesPersonForm';
 import CustomerForm from './CustomerForm';
 import SalesRecordForm from './SalesRecordForm';
 import TechnicianForm from './TechnicianForm';
+import ServiceHistory from './ServiceHistory';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='appointments'>
             <Route index element={<ListAppointments />} />
             <Route path='new' element={<AppointmentForm />} />
+            <Route path='history' element={<ServiceHistory />} />
           </Route>
 
           <Route path='technicians'>

@@ -9,8 +9,9 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
-# Import models from service_rest, here.
+
 from service_rest.models import AutomobileVO
+
 
 def get_automobiles():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
@@ -23,7 +24,6 @@ def get_automobiles():
 
 def poll():
     while True:
-        print('Service poller polling for data')
         try:
             get_automobiles()
         except Exception as e:
