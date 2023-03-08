@@ -28,7 +28,7 @@ function SalesRecordForm () {
             const data = await salesPeopleResponse.json()
             setSalesPeople(data.sales_people)
         } else {
-            console.error(autosResponse)
+            console.error(salesPeopleResponse)
         }
 
         const customersResponse = await fetch('http://localhost:8090/api/customers/')
