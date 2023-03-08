@@ -31,6 +31,7 @@ function App() {
           <Route path="/records/" element={<ListSalesRecords />} />
           <Route path="/records/employee/" element={<ListPersonsSales />} />
 
+
           <Route path='appointments'>
             <Route index element={<ListAppointments />} />
             <Route path='new' element={<AppointmentForm />} />
