@@ -7,54 +7,95 @@ function Nav() {
         <NavLink className="navbar-brand" to="/">CarCar</NavLink>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link text-decorator-none" to="/employee/sales/new/">Add sales person</NavLink>
-            </li>
-            <li className="nav-item">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Employees
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li >
+                <NavLink className="dropdown-item" to="/employee/sales/new/">Add sales person</NavLink>
+                <hr style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/technicians/new/">Add technician</NavLink>
+                <hr style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/technicians/">View technicians</NavLink>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sales
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <NavLink className="dropdown-item" to="/records/new/">Record a sale</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/records/">All sales</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/records/employee/">Sales by employee</NavLink>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Service
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li >
+                <NavLink className="dropdown-item" to="/appointments/new/">Add appointment</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/appointments/">Pending appointments</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/appointments/history/">Service history</NavLink>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Inventory
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li >
+                <NavLink className="dropdown-item" to="/models/">Vehicle models</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/models/new/">Add vehicle model</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/automobiles/">View automobiles</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/automobiles/new/">Add automobile</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/manufacturers/">View manufacturers</NavLink>
+                <hr className="dropdown-divider" style={{margin: 5}} />
+              </li>
+              <li >
+                <NavLink className="dropdown-item" to="/manufacturers/new/">Add manufacturer</NavLink>
+              </li>
+            </ul>
+          </li>
+            <li >
               <NavLink className="nav-link" to="/customers/new/">Add customer</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/records/new/">Record a sale</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/records/">All sales</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/records/employee/">Sales by employee</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/">Pending appointments</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/history/">Service history</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/new/">Add appointment</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians/">View technicians</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians/new/">Add technician</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models/">Vehicle models</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/models/new/">Add vehicle model</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/">View automobiles</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/new/">Add automobile</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/">View manufacturers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/new/">Add manufacturer</NavLink>
-            </li>
+
+
           </ul>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
