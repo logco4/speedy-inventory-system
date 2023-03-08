@@ -18,14 +18,13 @@ def api_appointments(request):
     else:
         content = json.loads(request.body)
 
+
         try:
-            automobile = AutomobileVO.objects.get(vin=content["automobile"])
-            content["automobile"] = automobile
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid automobile id"},
-                status = 404,
-            )
+            AutomobileVO.objects.get(vin=content["vin"])
+            content["isVip"] = "yes"
+        except:
+            content["isVip"] = "no"
+
         try:
             technician = Technician.objects.get(employee_number=content["technician"])
             content["technician"] = technician
@@ -35,7 +34,10 @@ def api_appointments(request):
                 status = 404
             )
 
-        appointment = Appointment.objects.create(**content)
+        try:
+            appointment = Appointment.objects.create(**content)
+        except:
+            return JsonResponse({"message": "Missing data for create"})
         return JsonResponse(
             appointment,
             encoder=AppointmentEncoder,
@@ -53,7 +55,11 @@ def api_technicians(request):
         )
     else:
         content = json.loads(request.body)
-        technician = Technician.objects.create(**content)
+
+        try:
+            technician = Technician.objects.create(**content)
+        except:
+            return JsonResponse({"message": "Missing data for create"})
         return JsonResponse(
             technician,
             encoder=TechnicianEncoder,
@@ -72,12 +78,12 @@ def api_technician(request, id):
                 safe=False,
             )
         except Technician.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
+            response = JsonResponse({"message": "Technician not exist"})
             response.status_code = 404
             return response
 
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "DELETE"])
 def api_appointment(request, id):
     if request.method == "GET":
         try:
@@ -88,6 +94,9 @@ def api_appointment(request, id):
                 safe=False,
             )
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
+            response = JsonResponse({"message": "Appointment does not exist"})
             response.status_code = 404
             return response
+    else:
+        count, _ = Appointment.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})

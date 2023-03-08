@@ -23,13 +23,15 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
-        "owner",
+        "vin",
+        "customer_name",
         "appt_date",
         "appt_time",
         "reason",
+        "isVip",
         "id",
+        "technician",
     ]
     encoders = {
-        "automobile": AutomobileVOEncoder(),
         "technician": TechnicianEncoder(),
     }

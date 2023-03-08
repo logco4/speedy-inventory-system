@@ -19,22 +19,18 @@ class Technician(models.Model):
         return (self.name)
 
 class Appointment(models.Model):
-    owner = models.CharField(max_length=100)
+    vin = models.CharField(max_length=17, null=True)
+    customer_name = models.CharField(max_length=100)
     appt_date = models.DateField(auto_now=False, auto_now_add=False, null=True)
     appt_time = models.TimeField(auto_now=False, auto_now_add=False, null=True)
     reason = models.CharField(max_length=200)
+    isVip = models.CharField(max_length=100, null=True)
     technician = models.ForeignKey(
         Technician,
         related_name="appointments",
         on_delete=models.CASCADE,
     )
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="appointments",
-        on_delete=models.CASCADE,
-        null=True,
-    )
 
 
     def __str__(self):
-        return (self.owner)
+        return (self.customer_name)
