@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AppointmentForm from './AppointmentForm';
-import ListAppointments from './ListAppointments';
-import ListTechnicians from './ListTechnicians';
+import AppointmentForm from './appointments/AppointmentForm';
+import ListAppointments from './appointments/ListAppointments';
+import ListTechnicians from './technicians/ListTechnicians';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import SalesPersonForm from './SalesPersonForm';
-import CustomerForm from './CustomerForm';
-import SalesRecordForm from './SalesRecordForm';
-import TechnicianForm from './TechnicianForm';
-import ServiceHistory from './ServiceHistory';
-import ListSalesRecords from './ListSalesRecords';
-import ListPersonsSales from './ListPersonsSales';
-import ListManufacturers from './ListManufacturers';
-import ManufacturerForm from './ManufacturerForm';
-import ListVehicleModels from './ListVehicleModels';
-import VehicleModelForm from './VehicleModelForm';
-import ListAutomobiles from './ListAutomobiles';
-import AutomobileForm from './AutomobileForm';
+import SalesPersonForm from './sales/SalesPersonForm';
+import CustomerForm from './customers/CustomerForm';
+import SalesRecordForm from './sales/SalesRecordForm';
+import TechnicianForm from './technicians/TechnicianForm';
+import ServiceHistory from './appointments/ServiceHistory';
+import ListSalesRecords from './sales/ListSalesRecords';
+import ListPersonsSales from './sales/ListPersonsSales';
+import ListManufacturers from './manufacturers/ListManufacturers';
+import ManufacturerForm from './manufacturers/ManufacturerForm';
+import ListVehicleModels from './vehicle-models/ListVehicleModels';
+import VehicleModelForm from './vehicle-models/VehicleModelForm';
+import ListAutomobiles from './automobiles/ListAutomobiles';
+import AutomobileForm from './automobiles/AutomobileForm';
 
 function App() {
   return (

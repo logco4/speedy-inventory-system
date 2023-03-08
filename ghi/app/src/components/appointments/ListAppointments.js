@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import App from './App';
 import {Link} from 'react-router-dom';
 
 
 function ListAppointments() {
     const [appointments, setAppointments] = useState([]);
-    const [filteredAppointments, setFilteredAppointments] = useState([]);
 
 
     const getData = async () => {
@@ -15,6 +13,7 @@ function ListAppointments() {
             const data = await response.json();
             setAppointments(data.appointments.filter((appointment) => appointment.status === 'SUBMITTED'));
         }
+
 
 
     }
@@ -29,7 +28,6 @@ function ListAppointments() {
         const appointment = e.target.name
         const status = e.target.value
         const data = {status: status}
-
 
         const locationUrl = `http://localhost:8080/api/appointments/${appointment}/`;
 
