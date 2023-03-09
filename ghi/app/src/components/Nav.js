@@ -21,7 +21,7 @@ function Nav() {
                 <hr style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/technicians/">View technicians</NavLink>
+                <NavLink className="dropdown-item" to="/technicians/">Employee list</NavLink>
               </li>
             </ul>
           </li>
