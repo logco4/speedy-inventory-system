@@ -20,7 +20,18 @@ function ListManufacturers() {
 
     return (
         <>
-        <h1>Manufacturers</h1>
+        <div>
+            <div className='row' style={{width:"100%"}}>
+                <div style={{paddingLeft:10}} className='col-10'>
+                    <h1>Manufacturers</h1>
+                </div>
+                <div className='col-2 justify-content-end'>
+                    <Link to="/manufacturers/new">
+                        <button  className='btn btn-success justify-content-end mt-2'>Add manufacturer</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
         <table className='table table-striped'>
             <thead>
                 <tr>
@@ -37,9 +48,6 @@ function ListManufacturers() {
                 })}
             </tbody>
         </table>
-        <Link to="/manufacturers/new">
-            <button className='btn btn-success'>Add manufacturer</button>
-        </Link>
         </>
     )
 }

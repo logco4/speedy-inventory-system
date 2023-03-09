@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
+import timeConvert from '../../functions';
 
 
 function ListAppointments() {
@@ -26,8 +27,10 @@ function ListAppointments() {
     const handleStatusChange = async (e) => {
         e.preventDefault();
         const appointment = e.target.name
+        console.log(appointment)
         const status = e.target.value
-        const data = {status: status}
+        console.log(status);
+        const data = {"status": status}
 
         const locationUrl = `http://localhost:8080/api/appointments/${appointment}/`;
 
@@ -49,7 +52,18 @@ function ListAppointments() {
 
     return (
         <>
-        <h1>Pending Appointments</h1>
+        <div>
+            <div className='row' style={{width:"100%"}}>
+                <div style={{paddingLeft:10}} className='col-10'>
+                    <h1>Upcoming Appointments</h1>
+                </div>
+                <div className='col-2 justify-content-end'>
+                    <Link to="/appointments/new">
+                        <button  className='btn btn-success justify-content-end mt-2'>Create appointment</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
         <table className='table table-striped'>
             <thead>
                 <tr>
@@ -71,21 +85,34 @@ function ListAppointments() {
                             <td>{appointment.customer_name}</td>
                             <td>{appointment.isVip}</td>
                             <td>{appointment.appt_date}</td>
-                            <td>{appointment.appt_time}</td>
+                            <td>{timeConvert(appointment.appt_time)}</td>
                             <td>{appointment.technician.name}</td>
                             <td>{appointment.reason}</td>
                             <td>
-                                <button onClick={handleStatusChange} name={appointment.id} value="CANCELED" id={appointment.id} className='btn btn-danger'>Cancel</button>
-                                <button onClick={handleStatusChange} name={appointment.id} value="FINISHED" className='btn btn-success'>Finished</button>
+                                <div className="dropdown me-1">
+                                    <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                    Options
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <Link to='/appointments/reschedule' state={{ appointment : appointment }} className="text-decoration-none" >
+                                            <li value={appointment.id} className="dropdown-item">
+                                                Reschedule
+                                            </li>
+                                        </Link>
+                                        <li className="btn dropdown-item">
+                                            <button onClick={handleStatusChange} name={appointment.id} value="FINISHED" id={appointment.id} className='btn link-success' style={{padding:0}}>Finished</button>
+                                        </li>
+                                        <li className="btn dropdown-item">
+                                            <button onClick={handleStatusChange} name={appointment.id} value="CANCELED" id={appointment.id} className='btn link-danger' style={{padding:0}}>Cancel</button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     );
                 })}
             </tbody>
         </table>
-        <Link to="/appointments/new">
-            <button className='btn btn-success'>Create appointment</button>
-        </Link>
         </>
     )
 }

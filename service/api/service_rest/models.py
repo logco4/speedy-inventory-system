@@ -44,7 +44,7 @@ class Appointment(models.Model):
     appt_time = models.TimeField(auto_now=False, auto_now_add=False, null=True)
     reason = models.CharField(max_length=200)
     isVip = models.CharField(max_length=100, null=True)
-    
+
     technician = models.ForeignKey(
         Technician,
         related_name="appointments",
@@ -63,4 +63,4 @@ class Appointment(models.Model):
         return (self.customer_name)
 
     class Meta:
-        ordering = ("customer_name",)
+        ordering = ("appt_date",)

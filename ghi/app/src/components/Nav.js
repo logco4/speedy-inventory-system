@@ -49,11 +49,11 @@ function Nav() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li >
-                <NavLink className="dropdown-item" to="/appointments/new/">Add appointment</NavLink>
+                <NavLink className="dropdown-item" to="/appointments/new/">Schedule appointment</NavLink>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/appointments/">Pending appointments</NavLink>
+                <NavLink className="dropdown-item" to="/appointments/">Upcoming appointments</NavLink>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
