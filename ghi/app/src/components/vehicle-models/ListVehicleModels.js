@@ -44,7 +44,7 @@ function ListVehicleModels() {
             </tbody>
         </table>
         <Link to="/models/new">
-            <button className='btn btn-primary'>Add vehicle model</button>
+            <button className='btn btn-success'>Add vehicle model</button>
         </Link>
         </>
     )

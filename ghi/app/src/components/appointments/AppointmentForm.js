@@ -110,7 +110,7 @@ function AppointmentForm() {
                   <label htmlFor="reason">Reason</label>
                   <input type="text" placeholder='Reason' value={formData.reason} onChange={handleFormChange} className="form-control" id="reason" rows="3" name="reason"></input>
                 </div>
-                <button className="btn btn-primary">Create appointment</button>
+                <button className="btn btn-success">Create appointment</button>
               </form>
             </div>
           </div>

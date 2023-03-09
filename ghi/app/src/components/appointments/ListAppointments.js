@@ -84,7 +84,7 @@ function ListAppointments() {
             </tbody>
         </table>
         <Link to="/appointments/new">
-            <button className='btn btn-primary'>Create appointment</button>
+            <button className='btn btn-success'>Create appointment</button>
         </Link>
         </>
     )

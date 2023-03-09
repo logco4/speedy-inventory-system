@@ -40,7 +40,7 @@ function ListTechnicians() {
             </tbody>
         </table>
         <Link to="/technicians/new">
-            <button className='btn btn-primary'>Add technician</button>
+            <button className='btn btn-success'>Add technician</button>
         </Link>
         </>
     )

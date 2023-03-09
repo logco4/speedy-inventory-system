@@ -54,7 +54,7 @@ function TechnicianForm() {
                   <input onChange={handleFormChange} value={formData.employee_number} placeholder="Employee number" required type="text" name="employee_number" id="employe_number" className="form-control" />
                   <label htmlFor="employee_number">Employee Number</label>
                 </div>
-                <button className="btn btn-primary">Add technician</button>
+                <button className="btn btn-success">Add technician</button>
               </form>
             </div>
           </div>
