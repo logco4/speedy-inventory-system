@@ -58,7 +58,7 @@ function ListAppointments() {
                     <h1>Upcoming Appointments</h1>
                 </div>
                 <div className='col-2 justify-content-end'>
-                    <Link to="/appointments/new">
+                    <Link to="/service/new/">
                         <button  className='btn btn-success justify-content-end mt-2'>Create appointment</button>
                     </Link>
                 </div>
@@ -94,7 +94,7 @@ function ListAppointments() {
                                     Options
                                     </button>
                                     <ul className="dropdown-menu">
-                                        <Link to='/appointments/reschedule' state={{ appointment : appointment }} className="text-decoration-none" >
+                                        <Link to='/service/reschedule/' state={{ appointment : appointment }} className="text-decoration-none" >
                                             <li value={appointment.id} className="dropdown-item">
                                                 Reschedule
                                             </li>

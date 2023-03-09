@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+        <Link className="navbar-brand" to="/">CarCar</Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item dropdown">
@@ -13,15 +13,15 @@ function Nav() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li >
-                <NavLink className="dropdown-item" to="/employee/sales/new/">Add sales person</NavLink>
+                <Link className="dropdown-item" to="/employees/sales/new/">Add sales person</Link>
                 <hr style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/technicians/new/">Add technician</NavLink>
+                <Link className="dropdown-item" to="/employees/service/new/">Add technician</Link>
                 <hr style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/technicians/">Employee list</NavLink>
+                <Link className="dropdown-item" to="/employees/">Employee list</Link>
               </li>
             </ul>
           </li>
@@ -31,15 +31,15 @@ function Nav() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <NavLink className="dropdown-item" to="/records/new/">Record a sale</NavLink>
+                <Link className="dropdown-item" to="/records/new/">Record a sale</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/records/">All sales</NavLink>
+                <Link className="dropdown-item" to="/records/">All sales</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/records/employee/">Sales by employee</NavLink>
+                <Link className="dropdown-item" to="/records/employee/">Sales by employee</Link>
               </li>
             </ul>
           </li>
@@ -49,15 +49,15 @@ function Nav() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li >
-                <NavLink className="dropdown-item" to="/appointments/new/">Schedule appointment</NavLink>
+                <Link className="dropdown-item" to="/service/schedule/">Schedule appointment</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/appointments/">Upcoming appointments</NavLink>
+                <Link className="dropdown-item" to="/service/">Upcoming appointments</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/appointments/history/">Service history</NavLink>
+                <Link className="dropdown-item" to="/service/history/">Service history</Link>
               </li>
             </ul>
           </li>
@@ -67,32 +67,32 @@ function Nav() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li >
-                <NavLink className="dropdown-item" to="/models/">Vehicle models</NavLink>
+                <Link className="dropdown-item" to="/models/">Vehicle models</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/models/new/">Add vehicle model</NavLink>
+                <Link className="dropdown-item" to="/models/new/">Add vehicle model</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/automobiles/">View automobiles</NavLink>
+                <Link className="dropdown-item" to="/automobiles/">View automobiles</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/automobiles/new/">Add automobile</NavLink>
+                <Link className="dropdown-item" to="/automobiles/new/">Add automobile</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/manufacturers/">View manufacturers</NavLink>
+                <Link className="dropdown-item" to="/manufacturers/">View manufacturers</Link>
                 <hr className="dropdown-divider" style={{margin: 5}} />
               </li>
               <li >
-                <NavLink className="dropdown-item" to="/manufacturers/new/">Add manufacturer</NavLink>
+                <Link className="dropdown-item" to="/manufacturers/new/">Add manufacturer</Link>
               </li>
             </ul>
           </li>
             <li >
-              <NavLink className="nav-link" to="/customers/new/">Add customer</NavLink>
+              <Link className="nav-link" to="/customers/new/">Add customer</Link>
             </li>
 
 

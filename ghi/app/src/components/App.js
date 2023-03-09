@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppointmentForm from './appointments/AppointmentForm';
 import ListAppointments from './appointments/ListAppointments';
-import ListTechnicians from './technicians/ListTechnicians';
+import ListEmployees from './employees/ListEmployees';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import SalesPersonForm from './sales/SalesPersonForm';
+import SalesPersonForm from './employees/SalesPersonForm';
 import CustomerForm from './customers/CustomerForm';
 import SalesRecordForm from './sales/SalesRecordForm';
-import TechnicianForm from './technicians/TechnicianForm';
+import TechnicianForm from './employees/TechnicianForm';
 import ServiceHistory from './appointments/ServiceHistory';
 import ListSalesRecords from './sales/ListSalesRecords';
 import ListPersonsSales from './sales/ListPersonsSales';
@@ -25,24 +25,28 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
+
           <Route path="/" element={<MainPage />} />
-          <Route path="/employee/sales/new/" element={<SalesPersonForm />} />
-          <Route path="/customers/new/" element={<CustomerForm />} />
-          <Route path="/records/new/" element={<SalesRecordForm />} />
-          <Route path="/records/" element={<ListSalesRecords />} />
-          <Route path="/records/employee/" element={<ListPersonsSales />} />
 
-
-          <Route path='appointments'>
-            <Route index element={<ListAppointments />} />
-            <Route path='new' element={<AppointmentForm />} />
-            <Route path='history' element={<ServiceHistory />} />
-            <Route path='reschedule' element={<RescheduleForm />} />
+          <Route path="employees">
+            <Route index element={<ListEmployees />} />
+            <Route path="sales/new/" element={<SalesPersonForm />} />
+            <Route path='service/new/' element={<TechnicianForm />} />
           </Route>
 
-          <Route path='technicians'>
-            <Route index element={<ListTechnicians />} />
-            <Route path='new' element={<TechnicianForm />} />
+          <Route path="records">
+            <Route index element={<ListSalesRecords />} />
+            <Route path="new/" element={<SalesRecordForm />} />
+            <Route path="employee/" element={<ListPersonsSales />} />
+          </Route>
+
+          <Route path="/customers/new/" element={<CustomerForm />} />
+
+          <Route path='service'>
+            <Route index element={<ListAppointments />} />
+            <Route path='schedule' element={<AppointmentForm />} />
+            <Route path='history' element={<ServiceHistory />} />
+            <Route path='reschedule' element={<RescheduleForm />} />
           </Route>
 
           <Route path='manufacturers'>

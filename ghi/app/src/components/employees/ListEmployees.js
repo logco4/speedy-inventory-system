@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 
-function ListTechnicians() {
+function ListEmployees() {
     const [technicians, setTechnicians] = useState([]);
     const [salesPeople, setSalesPeople] = useState([]);
 
@@ -36,7 +36,7 @@ function ListTechnicians() {
                             <h1>Technicians</h1>
                         </div>
                         <div className='col-4 justify-content-end'>
-                            <Link to="/technicians/new">
+                            <Link to="/employees/service/new/">
                                 <button  className='btn btn-success justify-content-end mt-2'>Add technician</button>
                             </Link>
                         </div>
@@ -86,7 +86,7 @@ function ListTechnicians() {
                             return (
                                 <tr key={salesPerson.id}>
                                     <td>{salesPerson.name}</td>
-                                    <td>{salesPerson.employee_number}</td>
+                                    <td>{salesPerson.employee_id}</td>
                                 </tr>
                             );
                         })}
@@ -98,4 +98,4 @@ function ListTechnicians() {
     )
 }
 
-export default ListTechnicians;
+export default ListEmployees;
