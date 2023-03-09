@@ -20,7 +20,18 @@ function ListTechnicians() {
 
     return (
         <>
-        <h1>Technicians</h1>
+        <div>
+            <div className='row' style={{width:"100%"}}>
+                <div style={{paddingLeft:10}} className='col-10'>
+                    <h1>Technicians</h1>
+                </div>
+                <div className='col-2 justify-content-end'>
+                    <Link to="/technicians/new">
+                        <button  className='btn btn-success justify-content-end mt-2'>Add technician</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
         <table className='table table-striped'>
             <thead>
                 <tr>
@@ -39,9 +50,6 @@ function ListTechnicians() {
                 })}
             </tbody>
         </table>
-        <Link to="/technicians/new">
-            <button className='btn btn-primary'>Add technician</button>
-        </Link>
         </>
     )
 }

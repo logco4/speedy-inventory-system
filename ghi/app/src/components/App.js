@@ -17,6 +17,7 @@ import ListVehicleModels from './vehicle-models/ListVehicleModels';
 import VehicleModelForm from './vehicle-models/VehicleModelForm';
 import ListAutomobiles from './automobiles/ListAutomobiles';
 import AutomobileForm from './automobiles/AutomobileForm';
+import RescheduleForm from './appointments/RescheduleAppointment';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route index element={<ListAppointments />} />
             <Route path='new' element={<AppointmentForm />} />
             <Route path='history' element={<ServiceHistory />} />
+            <Route path='reschedule' element={<RescheduleForm />} />
           </Route>
 
           <Route path='technicians'>

@@ -20,7 +20,18 @@ function ListAutomobiles() {
 
     return (
         <>
-        <h1>Vehicle models</h1>
+        <div>
+            <div className='row' style={{width:"100%"}}>
+                <div style={{paddingLeft:12}} className='col-10'>
+                    <h1>Automobiles</h1>
+                </div>
+                <div className='col-2 justify-content-end'>
+                    <Link to="/automobiles/new">
+                        <button  className='btn btn-success justify-content-end mt-2'>Create an automobile</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
         <table className='table table-striped'>
             <thead>
                 <tr>
@@ -45,9 +56,6 @@ function ListAutomobiles() {
                 })}
             </tbody>
         </table>
-        <Link to="/automobiles/new">
-            <button className='btn btn-primary'>Add automobile</button>
-        </Link>
         </>
     )
 }
