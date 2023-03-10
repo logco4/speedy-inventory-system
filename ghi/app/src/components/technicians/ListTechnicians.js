@@ -68,7 +68,7 @@ function ListTechnicians() {
                             <h1>Sales people</h1>
                         </div>
                         <div className='col-4 justify-content-end'>
-                            <Link to="/employees/sales/new/">
+                            <Link to="/employee/sales/new/">
                                 <button  className='btn btn-success justify-content-end mt-2'>Add sales person</button>
                             </Link>
                         </div>
@@ -86,7 +86,7 @@ function ListTechnicians() {
                             return (
                                 <tr key={salesPerson.id}>
                                     <td>{salesPerson.name}</td>
-                                    <td>{salesPerson.employee_number}</td>
+                                    <td>{salesPerson.employee_id}</td>
                                 </tr>
                             );
                         })}

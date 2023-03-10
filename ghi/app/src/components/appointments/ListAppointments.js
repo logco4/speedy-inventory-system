@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import timeConvert from '../../functions';
+import timeConvert from '../../TimeConvert';
+import dateConvert from '../../DateConvert';
 
 
 function ListAppointments() {
@@ -27,9 +28,7 @@ function ListAppointments() {
     const handleStatusChange = async (e) => {
         e.preventDefault();
         const appointment = e.target.name
-        console.log(appointment)
         const status = e.target.value
-        console.log(status);
         const data = {"status": status}
 
         const locationUrl = `http://localhost:8080/api/appointments/${appointment}/`;
@@ -84,18 +83,18 @@ function ListAppointments() {
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer_name}</td>
                             <td>{appointment.isVip}</td>
-                            <td>{appointment.appt_date}</td>
+                            <td>{dateConvert(appointment.appt_date)}</td>
                             <td>{timeConvert(appointment.appt_time)}</td>
                             <td>{appointment.technician.name}</td>
                             <td>{appointment.reason}</td>
                             <td>
                                 <div className="dropdown me-1">
-                                    <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                    <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
                                     Options
                                     </button>
                                     <ul className="dropdown-menu">
                                         <Link to='/appointments/reschedule' state={{ appointment : appointment }} className="text-decoration-none" >
-                                            <li value={appointment.id} className="dropdown-item">
+                                            <li value={appointment.id} className="dropdown-item btn-link-warning">
                                                 Reschedule
                                             </li>
                                         </Link>
