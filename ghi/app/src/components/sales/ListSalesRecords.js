@@ -32,17 +32,15 @@ function ListSalesRecords () {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        salesRecords.map(record => {
-                            return <tr key={record.id}>
-                                <td>{record.customer.name}</td>
-                                <td>{record.sales_person.name}</td>
-                                <td>{record.sales_person.employee_id}</td>
-                                <td>{record.price}</td>
-                                <td>{record.automobile.vin}</td>
-                            </tr>
-                        })
-                    }
+                    {salesRecords.map(record => {
+                        return <tr key={record.id}>
+                            <td>{record.customer.name}</td>
+                            <td>{record.sales_person.name}</td>
+                            <td>{record.sales_person.employee_id}</td>
+                            <td>{record.price}</td>
+                            <td>{record.automobile.vin}</td>
+                        </tr>
+                    })}
                 </tbody>
             </table>
         </div>
