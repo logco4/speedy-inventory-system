@@ -93,33 +93,30 @@ function SalesRecordForm () {
                         <div className="form-floating mb-3">
                             <select onChange={handleFieldChange} value={formData.automobile} required name="automobile" id="automobile" className="form-select">
                                 <option value="">Choose an automobile</option>
-                                {
-                                    autos.map(automobile => {
-                                        return (
-                                        <option value={automobile.vin} key={automobile.vin}>{automobile.year} {automobile.manufacturer} {automobile.model} | Vin # {automobile.vin}</option>
-                                        )
+                                {autos.map(automobile => {
+                                    return (
+                                    <option value={automobile.vin} key={automobile.vin}>{automobile.year} {automobile.manufacturer} {automobile.model} | Vin # {automobile.vin}</option>
+                                    )
                                 })}
                             </select>
                         </div>
                         <div className="form-floating mb-3">
                             <select onChange={handleFieldChange} value={formData.customer} required name="customer" id="customer" className="form-select">
                                 <option value="">Choose a customer</option>
-                                {
-                                    customers.map(customer => {
-                                        return (
-                                        <option value={customer.id} key={customer.id}>{customer.name} | Customer ID: {customer.id}</option>
-                                        )
+                                {customers.map(customer => {
+                                    return (
+                                    <option value={customer.id} key={customer.id}>{customer.name} | Customer ID: {customer.id}</option>
+                                    )
                                 })}
                             </select>
                         </div>
                         <div className="form-floating mb-3">
                             <select onChange={handleFieldChange} value={formData.salesPerson} required name="salesPerson" id="salesPerson" className="form-select">
                                 <option value="">Choose a sales person</option>
-                                {
-                                    salesPeople.map(salesPerson => {
-                                        return (
-                                        <option value={salesPerson.employee_id} key={salesPerson.employee_id}>{salesPerson.name} | Employee ID: {salesPerson.employee_id}</option>
-                                        )
+                                {salesPeople.map(salesPerson => {
+                                    return (
+                                    <option value={salesPerson.employee_id} key={salesPerson.employee_id}>{salesPerson.name} | Employee ID: {salesPerson.employee_id}</option>
+                                    )
                                 })}
                             </select>
                         </div>
