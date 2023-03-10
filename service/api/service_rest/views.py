@@ -105,12 +105,14 @@ def api_appointment(request, id):
     else:
         content = json.loads(request.body)
 
+
         try:
-            status = Status.objects.get(name=content["status"])
-            content["status"] = status
+            if "status" in content:
+                status = Status.objects.get(name=content["status"])
+                content["status"] = status
         except:
             return JsonResponse(
-                {"message": "Invalid technician id"},
+                {"message": "Invalid status"},
                 status = 404
             )
 
