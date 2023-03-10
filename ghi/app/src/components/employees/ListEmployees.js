@@ -68,7 +68,7 @@ function ListEmployees() {
                             <h1>Sales people</h1>
                         </div>
                         <div className='col-4 justify-content-end'>
-                            <Link to="/employee/sales/new/">
+                            <Link to="/employees/sales/new/">
                                 <button  className='btn btn-success justify-content-end mt-2'>Add sales person</button>
                             </Link>
                         </div>

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import timeConvert from '../../TimeConvert';
+import dateConvert from '../../DateConvert';
 
 
 function ServiceHistory() {
@@ -60,8 +62,8 @@ function ServiceHistory() {
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer_name}</td>
                             <td>{appointment.isVip}</td>
-                            <td>{appointment.appt_date}</td>
-                            <td>{appointment.appt_time}</td>
+                            <td>{dateConvert(appointment.appt_date)}</td>
+                            <td>{timeConvert(appointment.appt_time)}</td>
                             <td>{appointment.technician.name}</td>
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
