@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import timeConvert from '../../TimeConvert';
-import dateConvert from '../../DateConvert';
+import { timeConvert, dateConvert } from '../../functions';
 
 
 function ServiceHistory() {
