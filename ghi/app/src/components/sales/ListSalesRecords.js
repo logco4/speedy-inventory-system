@@ -23,11 +23,13 @@ function ListSalesRecords () {
             <h2 className="text-center" ><b>All sales records</b></h2>
             <table className="table table-striped shadow p-4 mt-4 rounded">
                 <thead>
-                    <th>Purchaser</th>
-                    <th>Sales person</th>
-                    <th>Employeee ID</th>
-                    <th>Price</th>
-                    <th>Vehicle VIN</th>
+                    <tr>
+                        <th>Purchaser</th>
+                        <th>Sales person</th>
+                        <th>Employeee ID</th>
+                        <th>Price</th>
+                        <th>Vehicle VIN</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {
