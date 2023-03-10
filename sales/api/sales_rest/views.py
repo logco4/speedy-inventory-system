@@ -85,7 +85,7 @@ def api_list_records (request, sales_person_id=None):
             encoder=SalesRecordEncoder,
             safe=False
         )
-    else:                ##POST
+    else:
         content = json.loads(request.body)
 
         try:
@@ -188,6 +188,6 @@ def api_show_record (request, record_id):
             safe=False
         )
 
-    else:                  ##DELETE
+    else:  
         count, _ = SalesRecord.objects.filter(id=record_id).delete()
         return JsonResponse({"deleted": count > 0})
