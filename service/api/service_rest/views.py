@@ -109,11 +109,16 @@ def api_appointment(request, id):
             status = Status.objects.get(name=content["status"])
             content["status"] = status
         except:
-            pass
+            return JsonResponse(
+                {"message": "Invalid technician id"},
+                status = 404
+            )
+
 
         try:
-            technician = Technician.objects.get(employee_number=content["technician"])
-            content["technician"] = technician
+            if "technician" in content:
+                technician = Technician.objects.get(employee_number=content["technician"])
+                content["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid technician id"},
