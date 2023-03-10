@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import timeConvert from '../../TimeConvert';
-import dateConvert from '../../DateConvert';
+import { timeConvert, dateConvert } from '../../functions';
 
 
 function ListAppointments() {
