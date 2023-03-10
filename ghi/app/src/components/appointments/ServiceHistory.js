@@ -6,7 +6,6 @@ import dateConvert from '../../DateConvert';
 function ServiceHistory() {
     const [appointments, setAppointments] = useState([]);
     const [filterTerm, setFilterTerm] = useState("");
-    const [filterCategory, setFilterCategory] = useState("vin");
     const [filteredAppointments, setFilteredAppointments] = useState([]);
 
     const getData = async () => {
@@ -28,7 +27,7 @@ function ServiceHistory() {
     }
 
     const getFilteredAppointments = () => {
-        setFilteredAppointments(appointments.filter((appointment) => appointment[filterCategory].toLowerCase().includes(filterTerm.toLowerCase())));
+        setFilteredAppointments(appointments.filter((appointment) => appointment["vin"].toLowerCase().includes(filterTerm.toLowerCase())));
     };
 
 
@@ -57,7 +56,6 @@ function ServiceHistory() {
             <tbody>
                 {filteredAppointments.map((appointment) => {
                     return (
-                        <>
                         <tr key={appointment.id}>
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer_name}</td>
@@ -68,7 +66,6 @@ function ServiceHistory() {
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
                         </tr>
-                        </>
                     );
                 })}
             </tbody>

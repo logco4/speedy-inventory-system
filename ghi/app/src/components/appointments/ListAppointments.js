@@ -29,7 +29,7 @@ function ListAppointments() {
         e.preventDefault();
         const appointment = e.target.name
         const status = e.target.value
-        const data = {"status": status}
+        const data = {status: status}
 
         const locationUrl = `http://localhost:8080/api/appointments/${appointment}/`;
 
