@@ -5,7 +5,6 @@ Team:
 * Logan - Service microservice
 * Hayden Dunlap - Sales microservice
 
-
 ## Service microservice
 
 The service microservice is a bounded context within this project that has 4 models:
@@ -33,3 +32,4 @@ SalesPerson- This model is being used to store employee information for sales pe
 
 SalesRecord- This model is being used to hold information regarding the sale of a
     vehicle, and is related to the three other models by foreign key.
+
