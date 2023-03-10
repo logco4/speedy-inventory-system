@@ -57,7 +57,6 @@ function ServiceHistory() {
             <tbody>
                 {filteredAppointments.map((appointment) => {
                     return (
-                        <>
                         <tr key={appointment.id}>
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer_name}</td>
@@ -68,7 +67,6 @@ function ServiceHistory() {
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
                         </tr>
-                        </>
                     );
                 })}
             </tbody>
