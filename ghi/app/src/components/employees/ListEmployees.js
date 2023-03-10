@@ -84,7 +84,7 @@ function ListEmployees() {
                     <tbody>
                         {salesPeople.map(salesPerson => {
                             return (
-                                <tr key={salesPerson.id}>
+                                <tr key={salesPerson.employee_id}>
                                     <td>{salesPerson.name}</td>
                                     <td>{salesPerson.employee_id}</td>
                                 </tr>
