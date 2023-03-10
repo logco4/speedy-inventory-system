@@ -14,7 +14,7 @@ from .models import AutomobileVO, SalesPerson, SalesRecord, Customer
 
 @require_http_methods("GET")
 def api_list_automobiles (request):
-    autos = AutomobileVO.objects.exclude(sales_record=True)
+    autos = AutomobileVO.objects.filter(sales_record=None)
     return JsonResponse(
         {"autos": autos},
         encoder=AutomobileVOEncoder,
